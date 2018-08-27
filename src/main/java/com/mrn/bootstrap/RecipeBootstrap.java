@@ -4,15 +4,18 @@ import com.mrn.domain.*;
 import com.mrn.repositories.CategoryRepository;
 import com.mrn.repositories.RecipeRepository;
 import com.mrn.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -28,12 +31,18 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         // save the recipe list
+        log.debug("saving all recipes");
+
         recipeRepository.saveAll(getRecipes());
     }
 
     private List<Recipe> getRecipes() {
+
+        log.debug("Getting all recipes");
+
         List<Recipe> recipes = new ArrayList<>(2);
 
         // Get uOMs
@@ -114,6 +123,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 
         // YUMMY Guac
+
+        // project lombok - logger
+        log.debug("creating guacRecipe object");
+
         Recipe guacRecipe = new Recipe();
         guacRecipe.setDescription("Perfect Guacamole");
         guacRecipe.setPrepTime(10);
@@ -158,6 +171,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 
         // YUMMY Tacos
+
+        // project lombok - logger
+        log.debug("tacos Recipe object");
+
         Recipe tacosRecipe = new Recipe();
         tacosRecipe.setDescription("Spicy Grilled Chicken Taco");
         tacosRecipe.setCookTime(9);

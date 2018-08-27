@@ -1,11 +1,22 @@
 package com.mrn.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Set;
 
+/*
+* Generates getters for all fields, a useful toString method, and hashCode and equals implementations that check all non-transient fields.
+* Will also generate setters for all non-final fields, as well as a constructor.
+* Equivalent to @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.
+* */
+@Data // -> project lombok annotation
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
-
+//
+//    @ManyToMany
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,28 +26,4 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
-    @ManyToMany
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }

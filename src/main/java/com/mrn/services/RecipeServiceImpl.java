@@ -2,11 +2,13 @@ package com.mrn.services;
 
 import com.mrn.domain.Recipe;
 import com.mrn.repositories.RecipeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j // -> lombok annotation: this @SLf4j will give us a logger
 @Service
 public class RecipeServiceImpl implements RecipeService{
     // Instance of repository
@@ -21,6 +23,8 @@ public class RecipeServiceImpl implements RecipeService{
 
     @Override
     public Set<Recipe> getRecipes() {
+
+        log.debug("I'm in the service recipe implementation");
 
         Set<Recipe> recipes = new HashSet<>();
         // find all by iterating each of and add it to the set
