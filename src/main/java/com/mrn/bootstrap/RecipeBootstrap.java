@@ -130,14 +130,16 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Recipe guacRecipe = new Recipe();
         guacRecipe.setDescription("Perfect Guacamole");
         guacRecipe.setPrepTime(10);
-        guacRecipe.setCookTime(0);
+        guacRecipe.setCookTime(1);
         guacRecipe.setDifficulty(Difficulty.EASY);
         guacRecipe.setDirections("All you really need to make guacamole is ripe avocados and salt." +
                 " After that, a little lime or lemon juice—a splash of acidity—will help to balance the richness of the avocado. " +
                 "Then if you want, add chopped cilantro, chiles, onion, and/or tomato.\n" +
                 "\n" + "Once you have basic guacamole down, feel free to experiment with variations including strawberries, peaches, pineapple, mangoes, even watermelon. " +
                 "You can get creative with homemade guacamole!");
-
+        guacRecipe.setServicing(2);
+        guacRecipe.setSource("Goagal.com");
+        guacRecipe.setUrl("www.goagal.com/guacrec");
         Notes guacNotes = new Notes();
         guacNotes.setRecipeNotes("The trick to making perfect guacamole is using ripe avocados that are just the right amount of ripeness. " +
                 "Not ripe enough and the avocado will be hard and tasteless." +

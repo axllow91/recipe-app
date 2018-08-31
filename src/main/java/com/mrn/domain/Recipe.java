@@ -1,13 +1,14 @@
 package com.mrn.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
-@Data
+@Getter
+@Setter
 @Entity
 public class Recipe {
 
@@ -51,6 +52,9 @@ public class Recipe {
                 inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    public Recipe() {
+    }
+
     // add ingredient to recipe
     public Recipe addIngredient(Ingredient ingredient) {
         ingredient.setRecipe(this);
@@ -58,12 +62,12 @@ public class Recipe {
         return this;
     }
 
-    // remove ingredient
-    public Recipe removeIngredient(Ingredient ingredient) {
-        // set ingredient to recipe
-        ingredient.setRecipe(this);
-        this.ingredients.remove(ingredient);
-        return this;
-    }
+//    // remove ingredient
+//    public Recipe removeIngredient(Ingredient ingredient) {
+//        // set ingredient to recipe
+//        ingredient.setRecipe(this);
+//        this.ingredients.remove(ingredient);
+//        return this;
+//    }
 
 }
