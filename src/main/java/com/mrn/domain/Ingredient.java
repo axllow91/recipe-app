@@ -1,16 +1,13 @@
 package com.mrn.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-
-@Getter
 @Setter
-@EqualsAndHashCode(exclude = {"recipe"})
+@Getter
 @Entity
 public class Ingredient {
 

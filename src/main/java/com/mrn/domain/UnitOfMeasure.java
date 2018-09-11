@@ -16,5 +16,4 @@ public class UnitOfMeasure {
 
     @OneToOne
     private Ingredient ingredient;
-
 }
